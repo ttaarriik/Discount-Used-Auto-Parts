@@ -24,7 +24,6 @@ mongoose.connect(process.env.DATABASEURL);
 
 
 
-
 //PASSPORT CONFIGURE
 
 app.use(require("express-session")({
