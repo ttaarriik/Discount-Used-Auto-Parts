@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Discount Auto Used Parts</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+		<link rel = "stylesheet" type = "text/css" href = "../stylesheet/style.css">
+		<link rel = "stylesheet" type = "text/css" href = "../stylesheet/admin.css">
+	<body>
+<div class = "container">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/partSearch">Part Search<span class="sr-only">(current)</span></a>
+      </li>
+	<%	if(currentUser) { %>
+			<li class="nav-item active">
+        		<a class="nav-link" href="/postParts">Post a part<span class="sr-only">(current)</span></a>
+      		</li>
+			<li class="nav-item active">
+        		<a class="nav-link" href="/request">View requests <span class="sr-only">(current)</span></a>
+      		</li>
+	<%	}	%>
+
+    </ul>
+	  	<% if(currentUser) { %>
+	  		 <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
+	  	<% } %> 
+		 <a class="nav-link" href="/contact">Contact<span class="sr-only">(current)</span></a>
+	  	<% if(currentUser) { %> 
+	  
+	  		<div class="nav-link">Logged in as <%=currentUser.username%> <span class="sr-only">(current)</span></div>
+	  	
+	  	<% } else { %>
+ 		 <a class="nav-link" href="/adminLogin">Admin Login<span class="sr-only">(current)</span></a>
+		<% } %>
+
+  </div>
+</nav>						
+</div>	
+	

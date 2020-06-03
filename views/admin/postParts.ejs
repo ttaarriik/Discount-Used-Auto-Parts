@@ -1,0 +1,33 @@
+<%- include("../partials/header") -%>
+
+<div class = "container">
+	<form class = "partForm" action = "/postParts" method = "POST">
+		<h3>Post a car part</h3>	
+		<hr>
+		<div class = dropdowns>
+			<select name="carPart[year]" id="year">
+			<option selected="selected">Year</option>
+			</select>
+			<select name="carPart[make]" id="model">
+			</select>
+			<select name="carPart[part]" id = "part">
+			</select>
+			<button type="submit" class = "partButton">Post part</button>
+		</div>
+			
+	</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include("../partials/footer") -%>

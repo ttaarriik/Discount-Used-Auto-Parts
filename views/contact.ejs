@@ -1,0 +1,36 @@
+<%- include("./partials/header") -%>
+
+<div class = "container">
+	<h1 class = "contactH1">CONTACT</h1>
+	<hr>
+	<h2>We would <i class="far fa-heart"></i> to help you</h2>
+	<div class = "row">
+		<div class = "col-md-6 col-sm">
+			<form action = "/request" method = "POST">
+				<h4>Let us know what exactly you are looking for and we will contact you</h4>
+				<input type = "text" name = "info[name]" placeholder = "Name" required>
+				<input type = "tel" name = "info[phone]" placeholder = "phone number" required>
+				<textarea name="info[message]" rows="10" cols="60" placeholder = "Part" required></textarea>
+				<button type="submit" class="btn btn-secondary btn-lg btn-block" id = "reqButton">Send</button>
+			</form>
+		</div>
+		<div class = "col-md-6 col-sm">
+			<iframe src="https://maps.google.com/maps?q=37.911590, -121.276760&z=17&output=embed"  style="border:5"></iframe>
+			<hr>
+			<div class = "contactInfo">
+					<div><i class="fas fa-map-marker-alt"></i><a class = "address" href = "https://www.google.com/maps/place/3679+El+Dorado+St,+Stockton,
+				+CA+95206/@37.9112928,-121.2791757,17z/data=!3m
+				1!4b1!4m5!3m4!1s0x8090133a3350dc95:0xd3c02914
+				aeb4f41!8m2!3d37.9112928!4d-121.276987"> 3679 El Dorado St, Stockton, CA 95206</a></div>
+			<div><i class="fas fa-phone-square-alt"></i> 510-600-1768</div>
+			<div><i class="far fa-envelope"></i> azizbodyparts@gmail.com</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<%- include("./partials/footer") -%>

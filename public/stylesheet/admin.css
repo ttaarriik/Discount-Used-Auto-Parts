@@ -1,0 +1,33 @@
+.loginForm {
+	border: 2px solid #000000;
+	width: 40%;
+	margin: 100px auto;
+	background-color: #E1E1E1;
+	text-align: center;
+}
+
+.form-group {
+	width: 80%;
+	margin: 0 auto;
+}
+
+button[type="submit"]{
+	background-color: #9CA3A2;
+	border-color: #9CA3A2;
+}
+
+.table {
+	margin: 100px auto;
+}
+
+.btn-danger {
+	position: relative;
+    left: 350px;
+    bottom: 55px;
+}
+
+.noRequest {
+	text-align: center;
+	margin-top: 100px;
+}
+	
