@@ -9,6 +9,7 @@ var express 				= require("express"),
 	Admin				 	= require("./models/admin"),
 	Request					= require("./models/request"),
 	Part					= require("./models/parts"),
+	Car						= require("./models/cars"),
 	methodOverride			= require("method-override");
 
 
@@ -20,8 +21,9 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect(process.env.DATABASEURL);
 
+var url = process.env.DATABASEURL || 3000;
+mongoose.connect(url);
 
 
 //PASSPORT CONFIGURE
