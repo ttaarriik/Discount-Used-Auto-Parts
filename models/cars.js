@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var carSchema = mongoose.Schema({
+var carSchema = new mongoose.Schema({
 	year: Number,
 	make: String,
 	vin: String,

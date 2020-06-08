@@ -26,8 +26,33 @@ button[type="submit"]{
     bottom: 55px;
 }
 
+.btn-secondary {
+	color: #000;
+}
+
 .noRequest {
 	text-align: center;
 	margin-top: 100px;
+}
+
+.vin {
+	width: -webkit-fill-available;
+ 
+}
+
+.toggle {
+
+	display: flex;
+}
+
+label{
+	position: relative;
+    right: 200px;
+    top: 8px;
+}
+
+input[type="checkbox"]{
+	position: relative;
+	right: 100px;
 }
 	

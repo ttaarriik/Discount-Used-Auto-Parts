@@ -10,9 +10,10 @@ var express 				= require("express"),
 	Request					= require("./models/request"),
 	Part					= require("./models/parts"),
 	Car						= require("./models/cars"),
-	methodOverride			= require("method-override");
+	methodOverride			= require("method-override"),
+	dotenv					= require("dotenv");
 
-
+dotenv.config();
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname +  "/public"));
@@ -116,6 +117,32 @@ app.post("/request", function(req, res){
 	})
 	
 });
+
+//CARS ROUTES
+app.get("/postCar", function(req, res){
+	res.render("cars/postCar");	
+})
+
+app.post("/postCar", function(req, res){
+	Car.create(req.body.car, function(err,car){
+		if(err){
+			console.log(err);
+		}else {
+			console.log(car);
+			res.redirect("/showParts");
+		}
+	})
+})
+
+// Car.create({make: "BMW",
+// 		   	parts: "Engine"}, function(err,car){
+// 		if(err){
+// 			console.log(err);
+// 		}else {
+// 			console.log(car);
+// 		}
+// 	})
+
 
 //DELETE ROUTES 
 app.delete("/request/:id", isLoggedIn, function(req,res){
