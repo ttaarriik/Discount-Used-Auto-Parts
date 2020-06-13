@@ -63,36 +63,118 @@ app.get("/partSearch", function(req, res){
 });
 
 app.post("/partSearch", function(req, res){
-	var searchedCar = req.body.carPart;
-	Part.find(req.body.carPart, function(err, foundPart){
+
+	
+	Part.find({name: req.body.carPart.parts}, function(err, part){
+		var notFound = null;
+		var carFound = false;
 		if(err){
-			console.log(err)
-		}else {
-			var noResults = {noResults: "No results are not found for " };
-			res.render("showParts", {part: foundPart, noResults: noResults, searchedCar: searchedCar });
+			console.log(err);
+		}else{
+			part.forEach(function(part){
+				Car.find({year: req.body.carPart.year,
+			   		  make: req.body.carPart.make,
+					  parts: part}, 
+			function(err, foundCar){
+				if(err){
+					console.log(err)
+				}else {
+					console.log(foundCar);
+					if(foundCar.length !== 0){
+						console.log("Found it!");
+						console.log(notFound);
+						carFound = true;
+						
+						return res.render("showParts", {car: foundCar, notFound: notFound});
+						
+					}
+			
+				}
+			})
+				
+			})
+			
+			
+			if(req.body.carPart.parts === "Select Part"){
+				Car.find({year: req.body.carPart.year,
+						  make: req.body.carPart.make},
+						function(err, foundCar){
+					if(err){
+						console.log(err);
+					}else if(foundCar.length < 1){
+						notFound = "Request not found for: ";
+						res.render("showParts", {notFound: notFound, searchedCar: req.body.carPart});
+					}else {
+						res.render("showParts", {car: foundCar, notFound: notFound});
+					}
+				})
+			}
+			
 		}
 	})
+	
 })
+
+
 app.get("/showParts", function(req, res){
-	Part.find({}, function(err, foundPart){
+	Car.find({}, function(err, foundCar){
 		if(err){
 			cosole.log(err)
 		}else {
-			res.render("showParts", {part: foundPart});
+			var notFound = null;
+			res.render("showParts", {car: foundCar, notFound: notFound});
 		}
 	})
 })
 
-app.get("/postParts", isLoggedIn, function(req, res){
-	res.render("./admin/postParts");
+
+app.get("/postCar", isLoggedIn, function(req, res){
+	res.render("./cars/postCar");
 });
 
-app.post("/postParts", isLoggedIn, function(req, res){
-	Part.create(req.body.carPart, function(err, createdCarPart){
+app.post("/postCar", isLoggedIn, function(req, res){
+	var carParts = req.body.car.parts;
+	Car.create({year: req.body.car.year,
+					make: req.body.car.make,
+					vin: req.body.car.vin}, function(err,car){
+									if(err){
+										console.log(err);
+									}else {
+										var b = 0;
+										for(var i = 0; i < carParts.length; i++){
+											Part.create({name: carParts[i]}, function(err, part){
+												if(err){
+													console.log(err);
+												}else {
+													car.parts.push(part);
+													if(b === carParts.length - 1){
+														car.save();	
+													}else {
+														console.log(carParts.length - 1);
+														b++;
+													}
+												}
+											})
+										}
+											
+									
+										
+										console.log(car);
+										res.redirect("/showParts");
+									}
+	})
+	
+		
+});
+
+	
+
+app.get("/showParts/:id", function(req, res){
+	Car.findById(req.params.id).populate("parts").exec(function(err, foundCar){
 		if(err){
 			console.log(err);
 		}else {
-			res.redirect("/showParts");
+			res.render("./cars/showPartsPage", {car: foundCar});
 		}
 	})
 })
@@ -118,31 +200,6 @@ app.post("/request", function(req, res){
 	
 });
 
-//CARS ROUTES
-app.get("/postCar", function(req, res){
-	res.render("cars/postCar");	
-})
-
-app.post("/postCar", function(req, res){
-	Car.create(req.body.car, function(err,car){
-		if(err){
-			console.log(err);
-		}else {
-			console.log(car);
-			res.redirect("/showParts");
-		}
-	})
-})
-
-// Car.create({make: "BMW",
-// 		   	parts: "Engine"}, function(err,car){
-// 		if(err){
-// 			console.log(err);
-// 		}else {
-// 			console.log(car);
-// 		}
-// 	})
-
 
 //DELETE ROUTES 
 app.delete("/request/:id", isLoggedIn, function(req,res){
@@ -156,11 +213,39 @@ app.delete("/request/:id", isLoggedIn, function(req,res){
 })
 
 app.delete("/showParts/:id", isLoggedIn, function(req,res){
-	Part.findByIdAndDelete(req.params.id, function(err, deletedPart){
+	Car.findByIdAndDelete(req.params.id, function(err, deletedCar){
 		if(err){
 			console.log(err);
 		}else {
+			deletedCar.parts.forEach(function(parts){
+				Part.findByIdAndDelete(parts, function(err, deletedPart){
+					if(err){
+						console.log(err);
+					}else {
+						console.log("Deleted: " + deletedPart);
+					}
+				})
+			})
 			res.redirect("/showParts");
+		}
+	})
+});
+
+app.delete("/showParts/:id/partsDelete/:_id", isLoggedIn, function(req,res){
+	Part.findByIdAndDelete(req.params._id, function(err, deletedPart){
+		if(err){
+			console.log(err);
+		}else {
+			Car.findByIdAndUpdate(req.params.id, 
+				{$pull: {parts: req.params._id}},
+				function(err, deletedCarPart){
+				if(err){
+					console.log(err);
+				}else {
+					console.log(deletedCarPart);
+					res.redirect("/showParts/" + req.params.id);
+				}
+			})
 		}
 	})
 })
@@ -172,7 +257,7 @@ app.get("/adminLogin", function(req,res){
 });
 
 app.post("/adminLogin", passport.authenticate("local", {
-	successRedirect: "/postParts",
+	successRedirect: "/postCar",
 	failureRedirect: "/adminLogin"
 }), function(req, res){
 	

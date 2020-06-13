@@ -1,12 +1,14 @@
 <%- include("./partials/header") -%>
 
-<div class = "container">
-	<% if(part.length === 0 && noResults !== null) { %>
-		<h1 class = "noRequest"><%=noResults.noResults%><%=searchedCar.year%> <%=searchedCar.make%> <%=searchedCar.part%></h1>
-	<% }else if(part.length === 0){ %>
-		<h1 class = "noRequest">There are currently no parts</h1>	
-	<% }else{ %>
-	<table class="table table-dark">
+
+	<% if(notFound !== null) { %>
+	
+	<h1 class = "notFound"><%=notFound%> <%=searchedCar.year%> <%=searchedCar.make%> <%=searchedCar.parts%></h1>
+	<button type="button" class="btn btn-dark"><a href = "/partSearch">Try again</a></button>
+	
+	<% } else { %>
+	<div class = "container">
+<table class="table table-dark">
   <thead>
     <tr>
       <th scope="col">Year</th>
@@ -15,21 +17,26 @@
     </tr>
   </thead>
   <tbody>
-	 <% part.forEach(function(part){ %>
+	 <% car.forEach(function(car){ %>
     <tr>
-      <td><%=part.year%></td>
-      <td><%=part.make%></td>
-		<td><%=part.part%>
+      <td><%=car.year%></td>
+      <td><%=car.make%></td>
+	
+		<td><a href = "/showParts/<%=car._id%>">Show parts</a>
+	
+		
 		<% if(currentUser){ %>
-		<form action = "/showParts/<%=part._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form></td>
+		<form action = "/showParts/<%=car._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form></td>
 		<%	} %>
     </tr>
 	 <% }) %>
   </tbody>
 </table>
+	
+</div>
+	
 	<% } %>
 
-</div>
 
 
 

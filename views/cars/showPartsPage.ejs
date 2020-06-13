@@ -1,0 +1,30 @@
+<%- include("../partials/header") -%>
+
+<div class = "container">
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Parts for <%=car.year%> <%=car.make%></th>
+    </tr>
+  </thead>
+  	<tbody>
+	 <% car.parts.forEach(function(part){ %>
+    <tr>
+		<td><%=part.name%>
+		<% if(currentUser){ %>
+		<form action = "/showParts/<%=car._id%>/partsDelete/<%=part._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form></td>
+		<%	} %>
+	</tr>
+
+	<% }) %>
+	</tbody>
+</table>
+</div>
+
+	 
+
+
+
+
+
+<%- include("../partials/footer") -%>
