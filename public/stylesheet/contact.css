@@ -56,3 +56,18 @@ iframe + hr {
 	
 }
 }
+
+.contactH1{
+	text-align: center;
+	margin-top: 25px;
+	color: 	#FFFFFF;
+	font-size: 65px;
+}
+
+.contactInfo {
+	text-align: center;
+	color: #FFFFFF;
+}
+.address{
+	color: #FFFFFF;
+}

@@ -9,11 +9,11 @@ var express		= 	require("express"),
 
 
 router.get("/", function(req, res){
-	res.render("home");
+	res.render("./main/home");
 });
 
 router.get("/contact", function(req, res){
-	res.render("contact");
+	res.render("./main/contact");
 });
 
 router.get("/request", middleware.isLoggedIn, function(req, res){
@@ -22,7 +22,7 @@ router.get("/request", middleware.isLoggedIn, function(req, res){
 			req.flash("error", err.message);
 			res.redirect("/request");
 		}else {
-			res.render("request", {info: found});
+			res.render("./main/request", {info: found});
 		}
 	})
 });

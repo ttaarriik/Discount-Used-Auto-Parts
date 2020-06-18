@@ -1,0 +1,98 @@
+.nav-link {
+	color: #fff;
+	padding-left: 0px;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link:hover {
+    color: #0056b3;
+}
+
+.navbar-dark .navbar-brand:hover {
+	 color: #0056b3;
+}
+body{
+	background-color: #9CA3A2;
+	
+}
+
+h2 {
+	color: 	#FFFFFF;
+	text-align: center;
+}
+hr{
+	border-top: 5px solid #DDDDDD;
+}
+
+input[type=tel] {
+	display: block;
+}
+
+input {
+	width: 100%;
+	margin: 15px;
+}
+
+textarea {
+	width: 100%;
+	margin: 15px;
+}
+
+h4{
+	text-align: center;
+	color: #FFFFFF;
+}
+
+select{
+	margin-top: 20px;
+}
+
+#year {
+	width: 30%;
+}
+
+.responsive {
+	width: 100%;
+  	height: auto;
+}
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, form {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+
+.table {
+	margin: 100px auto;
+}
+
+.noRequest {
+	text-align: center;
+	margin-top: 100px;
+}
+
+.vin {
+	width: -webkit-fill-available;
+ 
+}
+
+.toggle {
+
+	display: flex;
+}
+
+label{
+	position: relative;
+    right: 200px;
+    top: 8px;
+}
+
+input[type="checkbox"]{
+	position: relative;
+	right: 100px;
+}
+
+.notFound{
+	text-align: center;
+	margin-top: 100px;
+}

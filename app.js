@@ -53,7 +53,7 @@ app.use(function(req, res, next){
 	next();
 });
 
-
+//USING ALL THE ROUTES
 app.use(partRoute);
 app.use(mainRoute);
 app.use(authenticationRoute);

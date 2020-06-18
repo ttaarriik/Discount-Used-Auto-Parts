@@ -7,7 +7,7 @@ var express		= 	require("express"),
 
 
 router.get("/partSearch", function(req, res){
-	res.render("partSearch");
+	res.render("./cars/partSearch");
 });
 
 router.post("/partSearch", function(req, res){
@@ -20,7 +20,7 @@ router.post("/partSearch", function(req, res){
 		}else if(req.body.carPart.year === 'Select Year' || req.body.carPart.make === 'Select Make/Model'){
 			notFound = "INVALID SELECTION: Please select a Year, Model, Part ";
 			var searchedCar = null;
-			res.render("showParts", {notFound: notFound, searchedCar: searchedCar});	 
+			res.render("./cars/showParts", {notFound: notFound, searchedCar: searchedCar});	 
 				 
 		}else {
 				Car.find({year: req.body.carPart.year,
@@ -32,7 +32,7 @@ router.post("/partSearch", function(req, res){
 					res.redirect("/partSearch");
 				}else {
 					if(foundCar.length > 0){
-						return res.render("showParts", {car: foundCar, notFound: notFound});
+						return res.render("./cars/showParts", {car: foundCar, notFound: notFound});
 						
 					}else if(req.body.carPart.parts === "Select Part"){
 						Car.find({year: req.body.carPart.year,
@@ -45,14 +45,14 @@ router.post("/partSearch", function(req, res){
 								notFound = "Request not found for: ";
 								searchedCar = req.body.carPart;
 								searchedCar.parts = null;
-								res.render("showParts", {notFound: notFound, searchedCar: searchedCar});
+								res.render("./cars/showParts", {notFound: notFound, searchedCar: searchedCar});
 							}else {
-								res.render("showParts", {car: foundCar, notFound: notFound});
+								res.render("./cars/showParts", {car: foundCar, notFound: notFound});
 							}
 						})
 					}else{
 						notFound = "Request not found for: ";
-						res.render("showParts", {notFound: notFound, searchedCar: req.body.carPart});
+						res.render("./cars/showParts", {notFound: notFound, searchedCar: req.body.carPart});
 					}		
 					
 				}
@@ -71,7 +71,7 @@ router.get("/showParts", function(req, res){
 			res.redirect("/showParts");
 		}else {
 			var notFound = null;
-			res.render("showParts", {car: foundCar, notFound: notFound});
+			res.render("./cars/showParts", {car: foundCar, notFound: notFound});
 		}
 	})
 });

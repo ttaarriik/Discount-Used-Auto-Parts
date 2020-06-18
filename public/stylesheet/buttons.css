@@ -5,7 +5,6 @@
 @media screen and (max-width: 600px) {
   .btn-danger {
     position: relative;
-	top: 0;
 	right: 2px;
 	font-size: 50%; 
   }
@@ -25,9 +24,30 @@
 }
 @media screen and (max-width: 600px) {
   .btn-success {
-    position: relative;
-	top: 0;
 	font-size: 50%;
 	 
   }
+}
+
+.btn-dark{
+	margin: 20px 750px;
+}
+
+.btn-secondary {
+	color: #000;
+}
+
+.partButton {
+	margin-top: 20px;
+}
+
+#reqButton{
+	background-color: #5a6268;
+	position: relative;
+    left: 14px;
+}
+
+button[type="submit"]{
+	background-color: #9CA3A2;
+	border-color: #9CA3A2;
 }
