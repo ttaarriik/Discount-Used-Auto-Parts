@@ -5,14 +5,16 @@
   <thead>
     <tr>
       <th scope="col">Parts for <%=car.year%> <%=car.make%></th>
+		<th></th>
     </tr>
   </thead>
   	<tbody>
 	 <% car.parts.forEach(function(part){ %>
     <tr>
-		<td><%=part.name%>
+		<td><%=part.name%></td>
 		<% if(currentUser){ %>
-		<form action = "/showParts/<%=car._id%>/partsDelete/<%=part._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form></td>
+		<td>
+			<form action = "/showParts/<%=car._id%>/partsDelete/<%=part._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form></td>
 		<%	} %>
 	</tr>
 

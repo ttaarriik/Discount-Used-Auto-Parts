@@ -20,11 +20,7 @@ button[type="submit"]{
 	margin: 100px auto;
 }
 
-.btn-danger {
-	position: relative;
-    left: 300px;
-    bottom: 55px;
-}
+
 
 .btn-secondary {
 	color: #000;

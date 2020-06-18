@@ -11,6 +11,7 @@
       <th scope="col">Name</th>
       <th scope="col">Phone number</th>
       <th scope="col">Message</th>
+	  <th></th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +19,8 @@
     <tr>
       <td><%=info.name%></td>
       <td><%=info.phone%></td>
-		<td><%=info.message%><form action = "/request/<%=info._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form></td>
+		<td><%=info.message%></td>
+		<td><form action = "/request/<%=info._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form></td>
     </tr>
 	 <% }) %>
   </tbody>

@@ -42,13 +42,11 @@ textarea {
 	width: 100%;
 	margin: 15px;
 }
-button{
-	margin: 15px;
-	margin-top: 0;
-	
-}
+
 #reqButton{
 	background-color: #5a6268;
+	position: relative;
+    left: 14px;
 }
 
 form{
@@ -59,12 +57,7 @@ h4{
 	color: #FFFFFF;
 }
 
-iframe {
-	width: 450px;
-	height: 300px;
-	margin: 25px 50px;
-	border: 5px solid #CDCDCD;
-}
+
 .contactInfo {
 	text-align: center;
 	color: #FFFFFF;
@@ -73,9 +66,7 @@ iframe {
 	color: #FFFFFF;
 }
 
-iframe + hr {
-	width: 450px;
-}
+
 
 .partForm {
 	border: 3px solid #000000;
@@ -86,6 +77,20 @@ iframe + hr {
 	margin: 100px auto;
 	text-align: center;
 }
+@media screen and (max-width: 576px ){
+	.partForm{
+		width: 80%;
+	}
+	label{
+		position: relative;
+		left: 0;
+		margin-right: 30px;
+	}
+	.toggle{
+		margin-left: 100px;
+	}
+}
+
 form hr {
 	border-color: #000000;
 }

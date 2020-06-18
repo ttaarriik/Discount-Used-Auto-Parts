@@ -1,7 +1,11 @@
 <%- include("./partials/header") -%>
 
+	<% if(notFound !== null && searchedCar === null) { %>
+	
+	<h1 class = "notFound"><%=notFound%></h1>
+	<button type="button" class="btn btn-dark"><a href = "/partSearch">Try again</a></button>
 
-	<% if(notFound !== null) { %>
+	<% } else if(notFound !== null) { %>
 	
 	<h1 class = "notFound"><%=notFound%> <%=searchedCar.year%> <%=searchedCar.make%> <%=searchedCar.parts%></h1>
 	<button type="button" class="btn btn-dark"><a href = "/partSearch">Try again</a></button>
@@ -14,6 +18,7 @@
       <th scope="col">Year</th>
       <th scope="col">Make/Model</th>
       <th scope="col">Part</th>
+	  <th scope= "col"></th>
     </tr>
   </thead>
   <tbody>
@@ -22,11 +27,15 @@
       <td><%=car.year%></td>
       <td><%=car.make%></td>
 	
-		<td><a href = "/showParts/<%=car._id%>">Show parts</a>
+		<td><a href = "/showParts/<%=car._id%>">Show parts</a></td>
 	
-		
+		<td class="d-flex flex-row-reverse">
 		<% if(currentUser){ %>
-		<form action = "/showParts/<%=car._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form></td>
+		<form  action = "/showParts/<%=car._id%>?_method=DELETE" method = "POST"><button  class="btn btn-danger">Delete</button></form>
+		<form  ><a class="btn btn-success" href = "/postPart/<%=car._id%>">Add parts</a></form>
+			
+		
+		</td>
 		<%	} %>
     </tr>
 	 <% }) %>

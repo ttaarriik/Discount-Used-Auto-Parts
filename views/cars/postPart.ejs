@@ -1,0 +1,29 @@
+<%- include("../partials/header") -%>
+
+<div class = "container">
+	<form class = "partForm" action = "/postPart/<%=car._id%>" method = "POST">
+		<h3>Add parts to <%=car.year%> <%=car.make%></h3>	
+		<hr>
+		<div class = dropdowns>
+			
+			<p>
+  <a class="btn btn-secondary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Show parts</a>
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+		<div id = "toggle">
+			
+		</div>
+  			
+    </div>
+		
+  
+			<button type="submit" class = "partButton">Add this part</button>
+		</div>
+			
+	</form>
+	
+</div>
+
+
+
+
+<%- include("../partials/footer") -%>

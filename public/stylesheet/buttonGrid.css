@@ -1,0 +1,33 @@
+.btn-danger {
+	position: relative;
+    bottom: 30px;
+}
+@media screen and (max-width: 600px) {
+  .btn-danger {
+    position: relative;
+	top: 0;
+	right: 2px;
+	font-size: 50%; 
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .flex-row-reverse {
+   display: flex;
+	flex-direction: column;
+  }
+}
+
+.btn-success {
+	position: relative;
+    bottom: 30px;
+	margin-right: 10px;
+}
+@media screen and (max-width: 600px) {
+  .btn-success {
+    position: relative;
+	top: 0;
+	font-size: 50%;
+	 
+  }
+}

@@ -1,18 +1,18 @@
 <%- include("../partials/header") -%>
 
 <div class = "container">
-	<form class = "partForm" action = "/postCar" method = "POST">
+			<form class = "partForm" action = "/postCar" method = "POST">
 		<h3>Post a car with parts</h3>	
 		<hr>
 		<div class = dropdowns>
-			<select name="car[year]" id="year">
+			<select name="car[year]" id="year" required>
 			<option selected="selected">Year</option>
 			</select>
-			<select name="car[make]" id="model">
+			<select name="car[make]" id="model" required>
 			</select>
-			<input type = "text" name = "car[vin]" class = "vin" placeholder = "VIN">
+			<input minlength="17" maxlength="17" type = "text" name = "car[vin]" class = "vin" placeholder = "VIN">
 			<p>
-  <a class="btn btn-secondary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Add parts</a>
+  <a class="btn btn-secondary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Click Add parts</a>
     <div class="collapse multi-collapse" id="multiCollapseExample1">
 		<div id = "toggle">
 			
@@ -25,6 +25,8 @@
 		</div>
 			
 	</form>
+	
+	
 	
 </div>
 
