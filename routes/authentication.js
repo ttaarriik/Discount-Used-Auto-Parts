@@ -5,9 +5,6 @@ var express		= 	require("express"),
 
 
 
-
-
-
 router.get("/adminLogin", function(req,res){
 	res.render("./admin/login");
 });

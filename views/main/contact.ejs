@@ -1,13 +1,15 @@
 <%- include("../partials/header") -%>
 
 <div class = "container">
-	<h1 class = "contactH1">CONTACT</h1>
-	<hr>
-	<h2>We would <i class="far fa-heart"></i> to help you</h2>
+	<div class = "text">
+		<h1 class = "contactH1">CONTACT</h1>
+		<hr class = "hr">
+		<h2>We would <i class="far fa-heart"></i> to help you</h2>
+		<h4>Let us know what exactly you are looking for and we will contact you</h4>
+	</div>
 	<div class = "row">
 		<div class = "col-md-6 col-sm">
 			<form action = "/request" method = "POST" class="d-flex flex-column justify-content-center">
-				<h4>Let us know what exactly you are looking for and we will contact you</h4>
 				<input type = "text" name = "info[name]" placeholder = "Name" required>
 				<input type = "tel" name = "info[phone]" placeholder = "phone number" required>
 				<textarea name="info[message]" rows="10" cols="60" placeholder = "Part" required></textarea>
