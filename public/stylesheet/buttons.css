@@ -43,8 +43,7 @@
 
 #reqButton{
 	background-color: #5a6268;
-	position: relative;
-    left: 14px;
+	
 }
 
 button[type="submit"]{
